@@ -12,7 +12,6 @@ public class Address {
     private String zipcode;
 
     protected Address() {
-        super();
     }
 
     public Address(String city, String street, String zipcode) {
