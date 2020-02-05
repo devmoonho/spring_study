@@ -1,0 +1,13 @@
+spring:
+    profiles: test
+    
+    devtools:
+        livereload:
+           enabled: true
+        restart:
+            enabled: false 
+
+logging: 
+    level: 
+        org.hibernate.SQL: debug
+        org.hibernate.type: trace

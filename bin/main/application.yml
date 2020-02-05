@@ -1,5 +1,6 @@
 spring:
-    profiles: dev # 추가
+    profiles:  
+
     datasource:
         url: jdbc:h2:tcp://localhost/~/jpashop
         username: sa
@@ -24,3 +25,4 @@ logging:
     level: 
         org.hibernate.SQL: debug
         org.hibernate.type: trace
+
