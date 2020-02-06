@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import jpabook.jpashop.domain.Delivery;
@@ -10,6 +11,7 @@ import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -28,7 +30,7 @@ public class OrderService {
     /** 주문 생성  */
     @Transactional
     public Long order(Long memberId, Long itemId, int count) {
-        // 엔터티 조회
+        // 엔터티 조회 - 영속성 유지 
         Member member = memberRepository.findOne(memberId);
         Item item = itemRepository.findOne(itemId);
 
@@ -56,8 +58,8 @@ public class OrderService {
     }
 
     /** 검색 */
-    // public List<Order> findOrders(OrderSearch orderSearch){
-    //     return orderRepository.findAll(orderSearch);
-    // }
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAll(orderSearch);
+    }
 
 }

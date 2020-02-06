@@ -25,6 +25,7 @@ public class OrderRepository {
     }
 
     public List<Order> findAll(OrderSearch orderSearch) {
+        // 동적쿼리 구현
         String qlString =
                 "select o from Order o join o.member m where o.status =: status and m.name like :name";
 
