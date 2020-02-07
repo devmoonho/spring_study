@@ -26,13 +26,20 @@ public class OrderRepository {
 
     public List<Order> findAll(OrderSearch orderSearch) {
         // 동적쿼리 구현
-        String qlString =
-                "select o from Order o join o.member m where o.status =: status and m.name like :name";
+        // String qlString =
+        // "select o from Order o join o.member m where o.status =: status and m.name like :name";
+
+        String qlString = "select o from Order o";
 
         return em.createQuery(qlString, Order.class)
-                .setParameter("status", orderSearch.getOrderStatus())
-                .setParameter("name", orderSearch.getMemberName()).setMaxResults(1000)
+                // .setParameter("status", orderSearch.getOrderStatus())
+                // .setParameter("name", orderSearch.getMemberName()).setMaxResults(1000)
                 .getResultList();
+    }
 
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                " select o from Order o " + " join fetch o.member m " + " join fetch o.delivery d ",
+                Order.class).getResultList();
     }
 }
