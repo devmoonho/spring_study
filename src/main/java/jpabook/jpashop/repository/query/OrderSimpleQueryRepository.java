@@ -6,20 +6,20 @@ import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
 
 /**
- * OrderRepositoryQuery
+ * OrderSimpleQueryRepository
  */
 
 @Repository
 @RequiredArgsConstructor
-public class OrderRepositoryQuery {
-
+public class OrderSimpleQueryRepository {
     private final EntityManager em;
 
-    public List<OrderRepositoryQueryDto> findAllOrderDto() {
+    public List<OrderSimpleQueryRepositoryDto> findAllOrderDto() {
         return em.createQuery(
-                "select new jpabook.jpashop.repository.query.OrderRepositoryQueryDto("
+                "select new jpabook.jpashop.repository.query.OrderSimpleQueryRepositoryDto("
                         + "o.id, m.name, o.orderDate, o.status, d.address)"
                         + "from Order o join o.member m join o.delivery d ",
-                OrderRepositoryQueryDto.class).getResultList();
+                OrderSimpleQueryRepositoryDto.class).getResultList();
     }
+
 }

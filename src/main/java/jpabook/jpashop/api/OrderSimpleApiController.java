@@ -10,8 +10,8 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.repository.OrderRepository;
 import jpabook.jpashop.repository.OrderSearch;
-import jpabook.jpashop.repository.query.OrderRepositoryQuery;
-import jpabook.jpashop.repository.query.OrderRepositoryQueryDto;
+import jpabook.jpashop.repository.query.OrderSimpleQueryRepository;
+import jpabook.jpashop.repository.query.OrderSimpleQueryRepositoryDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
-    private final OrderRepositoryQuery orderRepositoryQuery; 
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     @GetMapping("/api/v1/simple-orders")
     public List<Order> searchOrderV1() {
@@ -51,8 +51,8 @@ public class OrderSimpleApiController {
     }
 
     @GetMapping("/api/v4/simple-orders")
-    public List<OrderRepositoryQueryDto> searchOrderV4(){
-       return orderRepositoryQuery.findAllOrderDto();
+    public List<OrderSimpleQueryRepositoryDto> searchOrderV4(){
+       return orderSimpleQueryRepository.findAllOrderDto();
     }
 
     @Data
