@@ -10,4 +10,9 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+	// @Bean
+	// JPAQueryFactory jpaQueryFactory(EntityManager em){
+	// 	return new JPAQueryFactory(em);
+	// }
+
 }
